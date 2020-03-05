@@ -1152,7 +1152,7 @@ rvMonsterBossMakron::Event_AllowMoreSpawns
 */
 // this will allow Makron to spawn more baddies.
 void rvMonsterBossMakron::Event_AllowMoreSpawns( void )	{
-	flagAllowSpawns = true;
+	flagAllowSpawns = false;//was true
 }
 
 /*
@@ -1226,30 +1226,30 @@ void rvMonsterBossMakron::Event_SetNextAction( const char * actionString)	{
 	if( !idStr::Cmp( actionString, "actionCannon"))	{
 		actionPatterned = MAKRON_ACTION_CANNON;
 	}
-	else if( !idStr::Cmp( actionString, "actionCannonSweep"))	{
+	/*else if( !idStr::Cmp( actionString, "actionCannonSweep"))	{
 		actionPatterned = MAKRON_ACTION_CANNON_SWEEP;
-	}
+	}*/
 	else if( !idStr::Cmp( actionString, "actionDMG"))	{
 		actionPatterned = MAKRON_ACTION_DMG;
 	}
-	else if( !idStr::Cmp( actionString, "actionDMGrenades"))	{
+	/*else if( !idStr::Cmp( actionString, "actionDMGrenades"))	{
 		actionPatterned = MAKRON_ACTION_GRENADE;
-	}
+	}*/
 	else if( !idStr::Cmp( actionString, "actionLightningSweep1"))	{
 		actionPatterned = MAKRON_ACTION_LIGHTNING_1;
 	}
 	else if( !idStr::Cmp( actionString, "actionLightningSweep2"))	{
 		actionPatterned = MAKRON_ACTION_LIGHTNING_2;
 	}
-	else if( !idStr::Cmp( actionString, "actionStomp"))	{
+	/*else if( !idStr::Cmp( actionString, "actionStomp"))	{
 		actionPatterned = MAKRON_ACTION_STOMP;
-	}
-	else if( !idStr::Cmp( actionString, "actionHeal"))	{
+	}*/
+	/*else if( !idStr::Cmp( actionString, "actionHeal"))	{
 		actionPatterned = MAKRON_ACTION_HEAL;
-	}
-	else if( !idStr::Cmp( actionString, "actionCharge"))	{
+	}*/
+	/*else if( !idStr::Cmp( actionString, "actionCharge"))	{
 		actionPatterned = MAKRON_ACTION_CHARGE;
-	}
+	}*/
 	else if( !idStr::Cmp( actionString, "actionKillPlayer"))	{
 		actionPatterned = MAKRON_ACTION_KILLPLAYER;
 	}
@@ -1898,7 +1898,7 @@ stateResult_t rvMonsterBossMakron::State_Torso_CannonAttack ( const stateParms_t
 				PlayAnim ( ANIMCHANNEL_LEGS, "range_cannon_start", parms.blendFrames );
 	
 			}
-			shots = (gameLocal.random.RandomInt ( 8 ) + 4) * combat.aggressiveScale;
+			shots = (gameLocal.random.RandomInt ( 8 ) + 25/*was 4*/) * combat.aggressiveScale;//EDITED HERE
 			return SRESULT_STAGE ( STAGE_WAITSTART );
 			
 		case STAGE_WAITSTART:
