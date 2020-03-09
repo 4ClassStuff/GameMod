@@ -10782,12 +10782,12 @@ void idPlayer::OffsetThirdPersonView( float angle, float range, float height, bo
 	GetViewPos( origin, axis );
 
 	if ( angle ) {
-		angles.pitch = 0.0f;
+		angles.pitch = 0.00f;
 	}
 
 	if ( angles.pitch > 45.0f ) {
 		angles.pitch = 45.0f;		// don't go too far overhead
-	}
+	}	
 
 	focusPoint = origin + angles.ToForward() * THIRD_PERSON_FOCUS_DISTANCE;
 	focusPoint.z += height;
